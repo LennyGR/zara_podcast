@@ -5,7 +5,7 @@ import Main from './Views/Main';
 import { useDispatch } from 'react-redux';
 import useMostPopular from './hooks/useMostPopular';
 import { useEffect } from 'react';
-import { storePopular } from './redux/actions';
+import { storePopular } from './redux/actions/podcast';
 
 const App = () => {
   const { data, error} = useMostPopular();

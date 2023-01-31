@@ -1,4 +1,5 @@
 import { podcastReducer } from './podcastReducer';
+import { searchReducer } from './searchReducer';
 
 import { persistCombineReducers, persistReducer } from 'redux-persist';
 import storageSession from 'redux-persist/lib/storage/session';
@@ -11,7 +12,8 @@ export const rootPersistConfig = {
 };
 
 const reducers = persistCombineReducers(rootPersistConfig, {
-    podcasts: podcastReducer
+    podcasts: podcastReducer,
+    search: searchReducer
 });
 
 export default persistReducer(rootPersistConfig, reducers);

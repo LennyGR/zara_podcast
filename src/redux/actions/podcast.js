@@ -1,4 +1,4 @@
-import { STORE_POPULAR } from "./constants";
+export const STORE_POPULAR = 'STORE_POPULAR';
 
 export const setPopular = (podcasts) => ({ type: STORE_POPULAR, payload: podcasts});
  
@@ -13,6 +13,8 @@ export const storePopular = data => {
                     delete item[prop];
                 }
             });
+            //concat name+artist
+            item['searchText'] = `${item['artist'].label} ${item['name'].label}`;  
             return item;
         });
         dispatch(setPopular(popular))

@@ -1,4 +1,4 @@
-import { STORE_POPULAR } from "../actions/constants";
+import { STORE_POPULAR } from "../actions/podcast";
 import { createReducer } from "./createReducer.js";
 
 const initialState = {

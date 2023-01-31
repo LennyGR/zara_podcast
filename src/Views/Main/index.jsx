@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import PreviewCard from "../../components/PreviewCard";
 import Searcher from "../../components/Searcher";
-import { getPopulars } from "../../redux/selectors/podcastSelector";
+import { getFilteredPopulars } from "../../redux/selectors/podcastSelector";
 
 const Main = () => {
-    const populars = useSelector(getPopulars)
+    const populars = useSelector(getFilteredPopulars)
     return (<>
         <div className="search__Container--main">
             <Searcher/>
