@@ -8,23 +8,23 @@ import { useEffect } from 'react';
 import { storePopular } from './redux/actions/podcast';
 
 const App = () => {
-  const { data, error} = useMostPopular();
-  const dispatch = useDispatch();
+	const { data, error } = useMostPopular();
+	const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (!error) {
-      dispatch(storePopular(data));
-    }
-  },[dispatch, data, error]);
+	useEffect(() => {
+		if (!error) {
+			dispatch(storePopular(data));
+		}
+	}, [dispatch, data, error]);
 
-  return (
-    <Router>
-      <Header />
-        <Routes>
-        <Route path='/' exact element={<Main />} />
-        </Routes>
-    </Router>
-  );
-}
+	return (
+		<Router>
+			<Header />
+			<Routes>
+				<Route path='/' exact element={<Main />} />
+			</Routes>
+		</Router>
+	);
+};
 
 export default App;

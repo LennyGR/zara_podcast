@@ -1,14 +1,17 @@
-import { TEXT_SEARCH } from "../actions/search";
-import { createReducer } from "./createReducer.js";
+import { TEXT_SEARCH } from '../actions/search';
+import { createReducer } from './createReducer.js';
 
 const initialState = {
-    searchText: ''
+	searchText: ''
 };
 
-const setSearchText = (state = initialState, { payload }) => ({...state, searchText: payload})
-  
+const setSearchText = (state = initialState, { payload }) => ({
+	...state,
+	searchText: payload
+});
+
 const searchReducer = createReducer(initialState, {
-    [TEXT_SEARCH]: setSearchText
-  });
+	[TEXT_SEARCH]: setSearchText
+});
 
 export { searchReducer };
