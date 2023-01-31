@@ -1,0 +1,1 @@
+export const STORE_POPULAR = 'STORE_POPULAR';
