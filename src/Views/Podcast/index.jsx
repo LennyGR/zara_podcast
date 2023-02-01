@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import EpisodesList from '../../components/EpisodesList';
 import Info from '../../components/Info';
 import useDetail from '../../hooks/useDetail';
 import useFeed from '../../hooks/useFeed';
@@ -32,7 +33,9 @@ const Podcast = () => {
 	return (
 		<div className='podcast__Container'>
 			<div className='aside'>{podcast && <Info podcast={podcast} />}</div>
-			<div className='main'></div>
+			<div className='main'>
+				{dataFeed && <EpisodesList list={dataFeed} podcastId={podcastId} />}
+			</div>
 		</div>
 	);
 };

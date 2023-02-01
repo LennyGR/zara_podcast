@@ -1,6 +1,7 @@
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import { staleOneDay } from '../API/constants';
+import { parseStringPromise } from 'xml2js';
 // import { xml2json } from 'xml-js';
 
 export const getUrl = async (url) => {
@@ -9,12 +10,12 @@ export const getUrl = async (url) => {
 	const headersContentType = response.headers?.['content-type'];
 	const isString = typeof response.data === 'string';
 
-	if (headersContentType?.includes('application/json') && isString) {
+	if (headersContentType?.includes('json') && isString) {
 		throw new Error('Error in getFeed');
 	}
 
-	if (headersContentType?.includes('application/xml') && isString) {
-		// pending find a library to transform xml to json
+	if (headersContentType?.includes('xml') && isString) {
+		return await parseStringPromise(response.data);
 	}
 
 	return response.data;
