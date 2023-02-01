@@ -10,3 +10,8 @@ export const getFilteredPopulars = createSelector(
 			pod?.searchText?.toUpperCase().includes(searchText.toUpperCase())
 		) || []
 );
+
+export const getPodcast = createSelector(
+	[getAllPopulars, (_, id) => id],
+	(populars, id) => populars?.find((item) => item.cleanId === id) || null
+);

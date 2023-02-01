@@ -1,14 +1,22 @@
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
 const PreviewCard = ({ podcast }) => {
 	const {
 		image: { label: img },
 		name: { label: title },
-		artist: { label: author }
+		artist: { label: author },
+		cleanId
 	} = podcast;
 
+	const navigate = useNavigate();
+
+	const handlePodcast = (id) => {
+		navigate(`/podcast/${id}`);
+	};
+
 	return (
-		<div className='Card__preview'>
+		<div className='Card__preview' onClick={() => handlePodcast(cleanId)}>
 			<div className='image'>
 				<img src={img} alt={title} />
 			</div>

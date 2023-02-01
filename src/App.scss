@@ -1,6 +1,7 @@
 $blue: #4f8ec6;
 $light-grey: #f1f1f1;
 $grey: #ccc;
+$shadow: 0px 2px 3px 1px rgb(0 0 0 / 20%);
 
 .header {
 	&__Container {
@@ -101,4 +102,61 @@ $grey: #ccc;
 		gap: 20px;
 		row-gap: 100px;
 	}
+}
+
+.podcast {
+  &__Container {
+    margin: 1rem 4rem;
+    display: flex;
+    flex-direction: row;
+
+    .aside {
+      width: 300px;
+    }
+
+    .main {
+      flex: 1;
+    }
+  }
+}
+
+.info {
+  box-shadow: $shadow;
+  border-radius: 2px;
+  padding: 1rem;
+
+  &__Image {
+    padding: 1rem 0;
+    text-align: center;
+
+    img {
+      border-radius: 4px;
+    }
+  }
+
+  &__Header {
+    border-bottom: 1px solid $light-grey;
+    border-top: 1px solid $light-grey;
+    font-size: 1rem;
+    padding: 1rem 0;
+
+    p {
+      margin: 0;
+      line-height: 1.2rem;
+    }
+
+    .title {
+      font-weight: 700;
+    }
+
+    .author {
+      font-style: italic;
+    }
+  }
+
+  &__Description {
+    .title {
+      font-weight: 700;
+    }
+  }
 }

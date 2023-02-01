@@ -7,7 +7,7 @@ export const setPopular = (podcasts) => ({
 
 export const storePopular = (data) => {
 	return async (dispatch) => {
-		//  clean data before storing
+		// clean data before storing
 		const popular = data?.feed?.entry?.map((item) => {
 			Object.keys(item).forEach((prop) => {
 				if (prop.includes('im:')) {
@@ -16,8 +16,10 @@ export const storePopular = (data) => {
 					delete item[prop];
 				}
 			});
-			//  concat name+artist
+			// concat name+artist <- performance improvement in search
 			item.searchText = `${item?.artist?.label} ${item?.name?.label}`;
+			// id
+			item.cleanId = item?.id?.attributes?.['im:id'];
 			return item;
 		});
 		dispatch(setPopular(popular));
