@@ -30,8 +30,6 @@ const useEpisodesList = (list) => {
 		}));
 	}, []);
 
-	// console.log(data);
-
 	const columns = useMemo(
 		() => [
 			{

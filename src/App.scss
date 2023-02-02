@@ -109,7 +109,7 @@ $shadow: 0px 2px 3px 1px rgb(0 0 0 / 20%);
     margin: 1rem 4rem;
     display: flex;
     flex-direction: row;
-	gap: 4rem;
+	gap: 5rem;
 
     .aside {
       width: 300px;
@@ -160,6 +160,7 @@ $shadow: 0px 2px 3px 1px rgb(0 0 0 / 20%);
       font-weight: 700;
     }
 	word-break: break-word;
+	text-align: justify;
   }
 }
 
@@ -167,7 +168,7 @@ $shadow: 0px 2px 3px 1px rgb(0 0 0 / 20%);
 
   table {
     border-spacing: 0;
-	width: -webkit-fill-available;
+	width: 100%;
 
     tr {
       :last-child {
@@ -200,7 +201,7 @@ $shadow: 0px 2px 3px 1px rgb(0 0 0 / 20%);
 	tbody {
 		tr {
 			&:nth-child(odd) {
-				background-color: $light-grey;
+				background-color: #F9F9F9;
 			}
 		}
 	}
@@ -229,9 +230,25 @@ $shadow: 0px 2px 3px 1px rgb(0 0 0 / 20%);
     	font-size: 18px;
 	}
 
-	&__table {
+	&__main {
 		box-shadow: $shadow;
     	padding: 1rem;
+
+		.description {
+			text-align: justify;
+    		font-style: italic;
+		}
+
+		.title {
+			font-weight: 700;
+    		font-size: 18px;
+		}
+
+		audio {
+			width: 100%;
+    		padding-top: 1rem;
+    		border-top: 1px solid #F1f1f1;
+		}
 	}
 
 	.link {

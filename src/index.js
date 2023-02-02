@@ -10,6 +10,9 @@ import { Provider } from 'react-redux';
 import { store, persistor } from '../src/redux/store/index';
 import { PersistGate } from 'redux-persist/integration/react';
 
+// React-Query
+// import { ReactQueryDevtools } from 'react-query/devtools';
+
 const queryClient = new QueryClient({
 	defaultOptions: {
 		retry: 3,
@@ -27,6 +30,7 @@ root.render(
 				<PersistGate persistor={persistor}>
 					<QueryClientProvider client={queryClient}>
 						<App />
+						{/* <ReactQueryDevtools initialIsOpen={false} /> */}
 					</QueryClientProvider>
 				</PersistGate>
 			</Provider>

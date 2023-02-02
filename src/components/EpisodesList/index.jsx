@@ -33,7 +33,7 @@ const EpisodesList = ({ list, podcastId }) => {
 		return (
 			<div className='episodes'>
 				<div className='episodes__header'>{`Episodes: ${data.length}`}</div>
-				<div className='episodes__table'>
+				<div className='episodes__main'>
 					<Table columns={columns} data={data} overrideCell={renderCell} />
 				</div>
 			</div>

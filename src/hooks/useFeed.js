@@ -1,24 +1,35 @@
 import { useQuery } from 'react-query';
 import axios from 'axios';
-import { staleOneDay } from '../API/constants';
+import { rssBase64, staleOneDay } from '../API/constants';
 import { parseStringPromise } from 'xml2js';
-// import { xml2json } from 'xml-js';
+import { b64ToUtf8, wrapProxy } from '../API/utils';
 
-export const getUrl = async (url) => {
-	const response = await axios.get(url);
+export const getRss = async (url) => {
+	let response = null;
+	// PERFORMANCE: we only use proxy if it's necessary, because implies a long delay
+	try {
+		response = await axios.get(url);
+	} catch (e) {
+		if (e.code === 'ERR_NETWORK') {
+			response = await axios.get(wrapProxy(url));
+		}
+	}
 
 	const headersContentType = response.headers?.['content-type'];
 	const isString = typeof response.data === 'string';
+	const data = response?.data?.contents || response?.data;
 
 	if (headersContentType?.includes('json') && isString) {
 		throw new Error('Error in getFeed');
 	}
 
-	if (headersContentType?.includes('xml') && isString) {
-		return await parseStringPromise(response.data);
+	if (data?.includes(rssBase64)) {
+		const base64Encoded = data.replace(rssBase64, '');
+		const base64Decoded = b64ToUtf8(base64Encoded);
+		return await parseStringPromise(base64Decoded);
 	}
 
-	return response.data;
+	return await parseStringPromise(data);
 };
 
 export default function useFeed({ data, isLoading, isError }) {
@@ -28,7 +39,7 @@ export default function useFeed({ data, isLoading, isError }) {
 		feedUrl = contents?.results[0]?.feedUrl;
 	}
 
-	return useQuery(['feed', feedUrl], () => getUrl(feedUrl), {
+	return useQuery(['feed', feedUrl], () => getRss(feedUrl), {
 		staleTime: staleOneDay,
 		enabled: feedUrl !== null
 	});

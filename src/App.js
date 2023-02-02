@@ -7,6 +7,7 @@ import useMostPopular from './hooks/useMostPopular';
 import { useEffect } from 'react';
 import { storePopular } from './redux/actions/podcast';
 import Podcast from './Views/Podcast';
+import Episode from './Views/Episode';
 
 const App = () => {
 	// eslint-disable-next-line no-unused-vars
@@ -25,6 +26,10 @@ const App = () => {
 			<Routes>
 				<Route path='/' exact element={<Main />} />
 				<Route path='/podcast/:podcastId' element={<Podcast />} />
+				<Route
+					path='/podcast/:podcastId/episode/:episodeId'
+					element={<Episode />}
+				/>
 			</Routes>
 		</Router>
 	);
